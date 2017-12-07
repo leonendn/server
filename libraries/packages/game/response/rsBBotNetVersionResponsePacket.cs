@@ -4,6 +4,9 @@
 namespace Libraries.packages.game
 {
 
+    /// <summary>
+    /// Packet type 0.
+    /// </summary>
     public class PacketBBotNetVersionResponsePacket
     {
 
@@ -12,11 +15,11 @@ namespace Libraries.packages.game
         /// <summary>
         /// Initializes a new instance of the class.
         /// </summary>
-        /// <param name="r">Response result.</param>
-        public PacketBBotNetVersionResponsePacket(byte r)
+        /// <param name="result">The result.</param>
+        public PacketBBotNetVersionResponsePacket(byte result)
         {
 
-            Result = r;
+            Result = result;
 
         }
 

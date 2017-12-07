@@ -21,25 +21,16 @@ namespace Libraries.helpers.package
 
             byte[] Result;
 
-            using (var Stream = new MemoryStream())
+            using (MemoryStream Stream = new MemoryStream())
             {
 
-                using (var Writer = new BinaryWriter(Stream))
+                using (BinaryWriter Writer = new BinaryWriter(Stream))
                 {
-
-                    if (isFile)
-                    {
-
-                        //@TODO check
-                        Writer.Write(Encoding.UTF8.GetBytes("123t"));
-                        Writer.Write(input.Length);
-
-                    }
 
                     Writer.BaseStream.WriteByte(0x78);
                     Writer.BaseStream.WriteByte(0xDA);
 
-                    using (var Compressor = new DeflateStream(Stream, CompressionMode.Compress, compressionLevel))
+                    using (DeflateStream Compressor = new DeflateStream(Stream, CompressionMode.Compress, compressionLevel))
                     {
 
                         Compressor.Write(input, 0, input.Length);
@@ -54,10 +45,10 @@ namespace Libraries.helpers.package
 
             uint uChecksum = Checksum(1, input, (uint)input.Length);
 
-            using (var Stream = new MemoryStream())
+            using (MemoryStream Stream = new MemoryStream())
             {
 
-                using (var Writer = new BinaryWriter(Stream))
+                using (BinaryWriter Writer = new BinaryWriter(Stream))
                 {
 
                     Writer.Write(Result);
@@ -84,13 +75,13 @@ namespace Libraries.helpers.package
         public static byte[] Decompress(byte[] input)
         {
 
-            using (var Stream = new MemoryStream(input))
+            using (MemoryStream Stream = new MemoryStream(input))
             {
 
-                using (var Compressor = new DeflateStream(Stream, CompressionMode.Decompress))
+                using (DeflateStream Compressor = new DeflateStream(Stream, CompressionMode.Decompress))
                 {
 
-                    using (var Result = new MemoryStream())
+                    using (MemoryStream Result = new MemoryStream())
                     {
 
                         Stream.Position = 2;

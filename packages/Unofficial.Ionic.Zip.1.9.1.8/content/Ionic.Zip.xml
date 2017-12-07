@@ -5734,7 +5734,7 @@
              </para>
             
              <para>
-               Setting this flag to true is equivalent to setting <see cref="P:Ionic.Zip.ZipEntry.ProvisionalAlternateEncoding"/> to <c>System.Text.Encoding.UTF8</c>.
+               Setting this flag to true is equivalent to setting <see cref="P:Ionic.Zip.ZipEntry.ProvisionalAlternateEncoding"/> to <c>System.Text.Encoding.UFT8</c>.
              </para>
             
              <para>

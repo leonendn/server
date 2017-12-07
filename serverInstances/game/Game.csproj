@@ -57,7 +57,7 @@
     <Compile Include="command\todo\cBBotNetUnregisterSessionIdRequest.cs" />
     <Compile Include="command\todo\cBDeleteMailRequest.cs" />
     <Compile Include="command\todo\cBDesignProductionComplete.cs" />
-    <Compile Include="command\todo\cBGetEmpireRequest.cs" />
+    <Compile Include="command\cBGetEmpireRequest.cs" />
     <Compile Include="command\todo\cBGetMailCoinRequest.cs" />
     <Compile Include="command\todo\cBGetMailItemRequest.cs" />
     <Compile Include="command\todo\cBGetMailMessagesRequest.cs" />
@@ -66,8 +66,8 @@
     <Compile Include="command\todo\cBReportPvPGameComplete.cs" />
     <Compile Include="command\todo\cBRequestAddUnitToRemoveListPacket.cs" />
     <Compile Include="command\todo\cBRequestAdjustSkillPoints.cs" />
-    <Compile Include="command\todo\cBRequestAllianceContestsStatus.cs" />
-    <Compile Include="command\todo\cBRequestAndIncrementScenarioIdPacket.cs" />
+    <Compile Include="command\cBRequestAllianceContestsStatus.cs" />
+    <Compile Include="command\cBRequestAndIncrementScenarioIdPacket.cs" />
     <Compile Include="command\todo\cBRequestAssignAdvisorPacket.cs" />
     <Compile Include="command\todo\cBRequestAttachStoredVanityItem.cs" />
     <Compile Include="command\todo\cBRequestAttachTraitPacket.cs" />
@@ -76,12 +76,12 @@
     <Compile Include="command\todo\cBRequestChangeAllianceContestContribution.cs" />
     <Compile Include="command\todo\cBRequestCharacterConfigUpdate.cs" />
     <Compile Include="command\todo\cBRequestChooseCraftSchool.cs" />
-    <Compile Include="command\todo\cBRequestCityDataPacket.cs" />
+    <Compile Include="command\cBRequestCityDataPacket.cs" />
     <Compile Include="command\todo\cBRequestCityInfoPacket.cs" />
     <Compile Include="command\todo\cBRequestConsoleCommand.cs" />
     <Compile Include="command\todo\cBRequestContentLicenseFile.cs" />
     <Compile Include="command\todo\cBRequestConvertBuildingToBlueprint.cs" />
-    <Compile Include="command\todo\cBRequestCreateNewCharacter.cs" />
+    <Compile Include="command\cBRequestCreateNewCharacter.cs" />
     <Compile Include="command\todo\cBRequestCreatePreloadedCharacter.cs" />
     <Compile Include="command\todo\cBRequestCurrentBonuses.cs" />
     <Compile Include="command\todo\cBRequestDeleteCharacter.cs" />
@@ -122,8 +122,8 @@
     <Compile Include="command\todo\cBRequestRemoveTraitPacket.cs" />
     <Compile Include="command\todo\cBRequestRenameCharacter.cs" />
     <Compile Include="command\todo\cBRequestResetSkillPoints.cs" />
-    <Compile Include="command\todo\cBRequestRetrieveOptions.cs" />
-    <Compile Include="command\todo\cBRequestRetrievePersistentData.cs" />
+    <Compile Include="command\cBRequestRetrieveOptions.cs" />
+    <Compile Include="command\cBRequestRetrievePersistentData.cs" />
     <Compile Include="command\todo\cBRequestRetrieveScenarioDelta.cs" />
     <Compile Include="command\todo\cBRequestSavedUnitsToServerFirstTime.cs" />
     <Compile Include="command\todo\cBRequestSelectMilestoneReward.cs" />

@@ -34,8 +34,13 @@ namespace Server
 
         private static void Main(string[] args)
         {
+
             if (Platform.IsMono && (int)Path.DirectorySeparatorChar == 47)
+            {
+
                 Program.ChangeScriptExecutable();
+
+            }
 
             if (!Platform.IsMono && !Environment.UserInteractive || Platform.IsMono && !AppDomain.CurrentDomain.FriendlyName.Equals(Path.GetFileName(Assembly.GetEntryAssembly().CodeBase)))
             {
@@ -81,12 +86,16 @@ namespace Server
                     string exeArg = args[0];
 
                     if (!string.IsNullOrEmpty(exeArg))
+                    {
+
                         exeArg = exeArg.TrimStart(new char[1]
                         {
 
                             '-'
 
                         });
+
+                    }
 
                     Program.Run(exeArg, args);
 
@@ -105,7 +114,11 @@ namespace Server
             {
 
                 if (!File.Exists(path))
+                {
+
                     return;
+
+                }                    
 
                 File.SetAttributes(path, File.GetAttributes(path) | (FileAttributes)(-2147483648));
 
@@ -166,8 +179,12 @@ namespace Server
         {
 
             if (!Program.setConsoleColor)
+            {
+
                 return;
 
+            }
+            
             Console.ForegroundColor = color;
 
         }
@@ -250,7 +267,7 @@ namespace Server
 
                         Program.SetConsoleColor(ConsoleColor.Red);
 
-                        Console.WriteLine("No server is configured, please check you configuration!");
+                        Console.WriteLine("FireSinging could not be started. No server is configured, please check you configuration!");
                         Console.ReadKey();
 
                         return;
@@ -265,16 +282,16 @@ namespace Server
 
                         Program.SetConsoleColor(ConsoleColor.Red);
 
-                        Console.WriteLine("Some server instances were started successfully, but the others failed! Please check error log for more information!");
+                        Console.WriteLine("FireSinging could not be started. Some server instances were started successfully, but the others failed! Please check error log for more information!");
+                        Console.ReadKey();
 
-                        break;
+                        return;
 
                     case StartResult.Failed:
 
                         Program.SetConsoleColor(ConsoleColor.Red);
 
-                        Console.WriteLine("Failed to start FireSinging! Please check error log for more information!");
-
+                        Console.WriteLine("FireSinging could not be started. Please check error log for more information!");
                         Console.ReadKey();
 
                         return;
@@ -369,7 +386,11 @@ namespace Server
                         {
 
                             if (controlCommand.Handler(bootstrap, Enumerable.ToArray<string>(Enumerable.Skip<string>((IEnumerable<string>)arguments, 1))))
+                            {
+
                                 Console.WriteLine("Ok");
+
+                            }                                
 
                         }
                         catch (Exception ex)
@@ -396,9 +417,17 @@ namespace Server
                 IProcessServer processServer = workItem as IProcessServer;
 
                 if (processServer != null && processServer.ProcessId > 0)
+                {
+
                     Console.WriteLine("{0}[PID:{1}] - {2}", (object)workItem.Name, (object)processServer.ProcessId, (object)workItem.State);
+
+                }                    
                 else
+                {
+
                     Console.WriteLine("{0} - {1}", (object)workItem.Name, (object)workItem.State);
+
+                }                    
 
             }
 
@@ -499,7 +528,11 @@ namespace Server
             {
 
                 if ("quit".Equals(str, StringComparison.OrdinalIgnoreCase))
+                {
+
                     return;
+
+                }                    
 
                 string[] strArray = str.Split(new char[1]{' '});
 
@@ -520,7 +553,11 @@ namespace Server
                     {
 
                         if (controlCommand.Handler(bootstrap, strArray))
+                        {
+
                             Console.WriteLine("Ok");
+
+                        }                            
 
                     }
                     catch (Exception ex)

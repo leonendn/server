@@ -6,7 +6,7 @@ using Libraries.helpers.package;
 namespace Authentication
 {
 
-    public class PlayerSession : AppSession<PlayerSession, Package>
+    public class Session : AppSession<Session, Package>
     {
 
         public string PlayerName { get; internal set; }
@@ -36,7 +36,7 @@ namespace Authentication
 
         }
 
-
+        
                
 
 

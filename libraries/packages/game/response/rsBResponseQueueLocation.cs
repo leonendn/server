@@ -37,10 +37,10 @@ namespace Libraries.packages.game
         public byte[] ToByteArray()
         {            
 
-            using (var Stream = new MemoryStream())
+            using (MemoryStream Stream = new MemoryStream())
             {
 
-                using (var Writer = new BinaryWriter(Stream))
+                using (BinaryWriter Writer = new BinaryWriter(Stream))
                 {
 
                     byte[] Package;

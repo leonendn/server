@@ -1,16 +1,34 @@
 ﻿using SuperSocket.SocketBase;
 
 using Libraries.helpers.package;
+using Libraries.enums;
 
 
 namespace Game
 {
 
-    public class PlayerSession : AppSession<PlayerSession, Package>
+    public class Session : AppSession<Session, Package>
     {
 
         public string PlayerName { get; internal set; }
         public string Password { get; internal set; }
+
+        // @TODO load player
+        public string Xuid { get; internal set; }
+
+        public string CharacterName = "FireSinger";
+        public long CharacterFlags = 0;
+        public Civilizations CharacterCivilizationId = (Civilizations)1;
+        public int CharacterLevel = 0;
+        public int CharacterXp = 0;
+        public byte CharacterMaxAge = 1;
+        public int CharacterMaxLevelXp = 1;
+        public int Region = 1;
+        public int SkillPoints = 1;
+        public int SkillResetPoints = 1;
+        public int scenarioID = 1;
+        public string scenarioName = "";
+
 
 
 

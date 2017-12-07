@@ -18,10 +18,10 @@ namespace Libraries.packages.game
         public PacketBBotNetVersionRequestPacket(byte[] request)
         {
 
-            using (var Stream = new MemoryStream(request))
+            using (MemoryStream Stream = new MemoryStream(request))
             {
 
-                using (var Reader = new BinaryReader(Stream))
+                using (BinaryReader Reader = new BinaryReader(Stream))
                 {
 
                     VerMajor = Reader.ReadInt32();

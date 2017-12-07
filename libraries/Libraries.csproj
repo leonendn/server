@@ -52,16 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="enums\Alliance.cs" />
+    <Compile Include="enums\Alliances.cs" />
     <Compile Include="enums\Civilizations.cs" />
     <Compile Include="enums\Offers.cs" />
     <Compile Include="enums\PacketTypes.cs" />
+    <Compile Include="enums\PacketTypesChat.cs" />
+    <Compile Include="enums\StringListTypes.cs" />
     <Compile Include="helpers\General.cs" />
     <Compile Include="helpers\package\PackageCommandFilter.cs" />
     <Compile Include="helpers\package\PackageParser.cs" />
     <Compile Include="helpers\package\Package.cs" />
     <Compile Include="helpers\package\PackageZipProtection.cs" />
     <Compile Include="helpers\Pathing.cs" />
+    <Compile Include="helpers\XML.cs" />
+    <Compile Include="packages\chat\request\rqBBotNetBasePacketCustomChatConnect.cs" />
+    <Compile Include="packages\chat\request\rqBBotNetBasePacketCustomChatPing.cs" />
+    <Compile Include="packages\chat\response\rsBBotNetBasePacketCustomChatPong.cs" />
     <Compile Include="packages\todo\request\rqBAcknowledgeBugReport.cs" />
     <Compile Include="packages\todo\request\rqBActivateConsumableEffect.cs" />
     <Compile Include="packages\todo\request\rqBAssetTransactionStoreAssets.cs" />
@@ -86,8 +92,8 @@
     <Compile Include="packages\todo\request\rqBReportPvPGameComplete.cs" />
     <Compile Include="packages\todo\request\rqBRequestAddUnitToRemoveListPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestAdjustSkillPoints.cs" />
-    <Compile Include="packages\todo\request\rqBRequestAllianceContestsStatus.cs" />
-    <Compile Include="packages\todo\request\rqBRequestAndIncrementScenarioIdPacket.cs" />
+    <Compile Include="packages\game\request\rqBRequestAllianceContestsStatus.cs" />
+    <Compile Include="packages\game\request\rqBRequestAndIncrementScenarioIdPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestAssignAdvisorPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestAssignAdvisorPacketResult.cs" />
     <Compile Include="packages\todo\request\rqBRequestAttachStoredVanityItem.cs" />
@@ -97,12 +103,12 @@
     <Compile Include="packages\todo\request\rqBRequestChangeAllianceContestContribution.cs" />
     <Compile Include="packages\todo\request\rqBRequestCharacterConfigUpdate.cs" />
     <Compile Include="packages\todo\request\rqBRequestChooseCraftSchool.cs" />
-    <Compile Include="packages\todo\request\rqBRequestCityDataPacket.cs" />
+    <Compile Include="packages\game\request\rqBRequestCityDataPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestCityInfoPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestConsoleCommand.cs" />
     <Compile Include="packages\todo\request\rqBRequestContentLicenseFile.cs" />
     <Compile Include="packages\todo\request\rqBRequestConvertBuildingToBlueprint.cs" />
-    <Compile Include="packages\todo\request\rqBRequestCreateNewCharacter.cs" />
+    <Compile Include="packages\game\request\rqBRequestCreateNewCharacter.cs" />
     <Compile Include="packages\todo\request\rqBRequestCreatePreloadedCharacter.cs" />
     <Compile Include="packages\todo\request\rqBRequestCurrentBonuses.cs" />
     <Compile Include="packages\todo\request\rqBRequestDeleteCharacter.cs" />
@@ -116,7 +122,7 @@
     <Compile Include="packages\todo\request\rqBRequestEnterRespecMode.cs" />
     <Compile Include="packages\todo\request\rqBRequestGetContainerNumSlots.cs" />
     <Compile Include="packages\todo\request\rqBRequestInstanceEnumeration.cs" />
-    <Compile Include="packages\todo\request\rqBRequestInventoryDataPacket.cs" />
+    <Compile Include="packages\game\request\rqBRequestInventoryDataPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestJoinAlliance.cs" />
     <Compile Include="packages\todo\request\rqBRequestLeaveAlliance.cs" />
     <Compile Include="packages\todo\request\rqBRequestMarketplaceAddItem.cs" />
@@ -143,8 +149,8 @@
     <Compile Include="packages\todo\request\rqBRequestRemoveTraitPacket.cs" />
     <Compile Include="packages\todo\request\rqBRequestRenameCharacter.cs" />
     <Compile Include="packages\todo\request\rqBRequestResetSkillPoints.cs" />
-    <Compile Include="packages\todo\request\rqBRequestRetrieveOptions.cs" />
-    <Compile Include="packages\todo\request\rqBRequestRetrievePersistentData.cs" />
+    <Compile Include="packages\game\request\rqBRequestRetrieveOptions.cs" />
+    <Compile Include="packages\game\request\rqBRequestRetrievePersistentData.cs" />
     <Compile Include="packages\todo\request\rqBRequestRetrieveScenarioDelta.cs" />
     <Compile Include="packages\todo\request\rqBRequestSavedUnitsToServerFirstTime.cs" />
     <Compile Include="packages\todo\request\rqBRequestSelectMilestoneReward.cs" />
@@ -172,17 +178,17 @@
     <Compile Include="packages\todo\request\rqBSendMailRequest.cs" />
     <Compile Include="packages\todo\request\rqBServerSpawnOnClient.cs" />
     <Compile Include="packages\todo\request\rqBUnitStatePacket.cs" />
-    <Compile Include="packages\todo\request\rqBGetEmpireRequest.cs" />
+    <Compile Include="packages\game\request\rqBGetEmpireRequest.cs" />
     <Compile Include="packages\todo\request\rqBUpdateResourcesPacket.cs" />
     <Compile Include="packages\todo\response\rsBBotNetResponsePong.cs" />
-    <Compile Include="packages\todo\response\rsBCharacterDetailsPacket.cs" />
+    <Compile Include="packages\game\response\rsBCharacterDetailsPacket.cs" />
     <Compile Include="packages\todo\response\rsBCharacterFlagsChanged.cs" />
-    <Compile Include="packages\todo\response\rsBCharacterInitPacket.cs" />
-    <Compile Include="packages\todo\response\rsBCharacterPersistenceDone.cs" />
-    <Compile Include="packages\todo\response\rsBCharacterStringListPacket.cs" />
+    <Compile Include="packages\game\response\rsBCharacterInitPacket.cs" />
+    <Compile Include="packages\game\response\rsBCharacterPersistenceDone.cs" />
+    <Compile Include="packages\game\response\rsBCharacterStringListPacket.cs" />
     <Compile Include="packages\todo\response\rsBDeleteMailResponse.cs" />
     <Compile Include="packages\todo\response\rsBEconDataDefinitionPacket.cs" />
-    <Compile Include="packages\todo\response\rsBGameCurrencyPacket.cs" />
+    <Compile Include="packages\game\response\rsBGameCurrencyPacket.cs" />
     <Compile Include="packages\todo\response\rsBGetMailCoinResponse.cs" />
     <Compile Include="packages\todo\response\rsBGetMailItemResponse.cs" />
     <Compile Include="packages\todo\response\rsBGetMailMessagesResponse.cs" />
@@ -191,21 +197,21 @@
     <Compile Include="packages\todo\response\rsBQuestGiverDespawnUnitPacket.cs" />
     <Compile Include="packages\todo\response\rsBResetLearnedDesignsPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseAdjustSkillPoints.cs" />
-    <Compile Include="packages\todo\response\rsBResponseAllianceContestsStatus.cs" />
+    <Compile Include="packages\game\response\rsBResponseAllianceContestsStatus.cs" />
     <Compile Include="packages\todo\response\rsBResponseAttachTraitPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseBuyItem.cs" />
     <Compile Include="packages\todo\response\rsBResponseChangeAllianceContestContribution.cs" />
-    <Compile Include="packages\todo\response\rsBResponseCityDataCompletePacket.cs" />
-    <Compile Include="packages\todo\response\rsBResponseCityDataStartPacket.cs" />
+    <Compile Include="packages\game\response\rsBResponseCityDataCompletePacket.cs" />
+    <Compile Include="packages\game\response\rsBResponseCityDataStartPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseCityInfoPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseConsoleCommand.cs" />
     <Compile Include="packages\todo\response\rsBResponseConvertBuildingToBlueprint.cs" />
-    <Compile Include="packages\todo\response\rsBResponseCreateNewCharacter.cs" />
+    <Compile Include="packages\game\response\rsBResponseCreateNewCharacter.cs" />
     <Compile Include="packages\todo\response\rsBResponseCurrentBonuses.cs" />
     <Compile Include="packages\todo\response\rsBResponseDeleteCharacter.cs" />
     <Compile Include="packages\todo\response\rsBResponseDesignProduction.cs" />
     <Compile Include="packages\todo\response\rsBResponseEnterRespecMode.cs" />
-    <Compile Include="packages\todo\response\rsBResponseGetContainerNumSlots.cs" />
+    <Compile Include="packages\game\response\rsBResponseGetContainerNumSlots.cs" />
     <Compile Include="packages\todo\response\rsBResponseInstanceEnumeration.cs" />
     <Compile Include="packages\todo\response\rsBResponseLaunchQuestMapPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseMarketplaceAddItem.cs" />
@@ -227,11 +233,11 @@
     <Compile Include="packages\todo\response\rsBResponseRemoveTraitPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseRequestRegionMap.cs" />
     <Compile Include="packages\todo\response\rsBResponseResetSkillPoints.cs" />
-    <Compile Include="packages\todo\response\rsBResponseRetrieveOptions.cs" />
+    <Compile Include="packages\game\response\rsBResponseRetrieveOptions.cs" />
     <Compile Include="packages\todo\response\rsBResponseRetrievePersistentData.cs" />
     <Compile Include="packages\todo\response\rsBResponseRetrieveScenarioDelta.cs" />
     <Compile Include="packages\todo\response\rsBResponseRewardNotificationPacket.cs" />
-    <Compile Include="packages\todo\response\rsBResponseScenarioIdPacket.cs" />
+    <Compile Include="packages\game\response\rsBResponseScenarioIdPacket.cs" />
     <Compile Include="packages\todo\response\rsBResponseSteamFinalize.cs" />
     <Compile Include="packages\todo\response\rsBResponseSteamSmokeTest.cs" />
     <Compile Include="packages\todo\response\rsBResponseSteamTransaction.cs" />
@@ -246,7 +252,7 @@
     <Compile Include="packages\todo\response\rsBSendMailResponse.cs" />
     <Compile Include="packages\todo\response\rsBServerGeneralMessage.cs" />
     <Compile Include="packages\todo\response\rsBUnitClientStatePacket.cs" />
-    <Compile Include="packages\todo\response\rsBGetEmpireResponse.cs" />
+    <Compile Include="packages\game\response\rsBGetEmpireResponse.cs" />
     <Compile Include="packages\todo\unknown\_BAllianceContestDefinitions.cs" />
     <Compile Include="packages\todo\unknown\_BCurrencyContentInfoUpdate.cs" />
     <Compile Include="packages\todo\unknown\_BDynamicGameConfigsPacket.cs" />
@@ -275,8 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="database\" />
-    <Folder Include="packages\chat\request\" />
-    <Folder Include="packages\chat\response\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

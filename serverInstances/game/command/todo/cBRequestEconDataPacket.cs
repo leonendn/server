@@ -8,7 +8,7 @@ using Libraries.enums;
 namespace Game.Command
 {
 
-    public class BRequestEconDataPacket : CommandBase<PlayerSession, Package>
+    public class BRequestEconDataPacket : CommandBase<Session, Package>
     {
 
         /// <summary>
@@ -16,13 +16,17 @@ namespace Game.Command
         /// </summary>
         /// <param name="s">The session.</param>
         /// <param name="i">The package info.</param>
-        public override void ExecuteCommand(PlayerSession s, Package p)
+        public override void ExecuteCommand(Session s, Package p)
         {
 
             var Request = new Libraries.packages.todo.PacketBRequestEconDataPacket(p.Content);
 
             if (s.Logger.IsDebugEnabled)
+            {
+
                 s.Logger.Debug($"Execute command: {Request}");
+
+            }
 
 
 

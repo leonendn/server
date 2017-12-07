@@ -6,7 +6,7 @@ using Libraries.helpers.package;
 namespace Chat
 {
 
-    public class PlayerSession : AppSession<PlayerSession, Package>
+    public class Session : AppSession<Session, Package>
     {
 
         public string PlayerName { get; internal set; }

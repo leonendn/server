@@ -40,12 +40,12 @@ namespace Libraries.helpers.package
         protected override int GetBodyLengthFromHeader(byte[] headerData, int offset, int length)
         {
 
-            using (var Stream = new MemoryStream(headerData, offset, length))
+            using (MemoryStream Stream = new MemoryStream(headerData, offset, length))
             {
 
                Stream.Seek(11, SeekOrigin.Begin);
 
-                using (var Reader = new BinaryReader(Stream))
+                using (BinaryReader Reader = new BinaryReader(Stream))
                 {
 
                     int i = Reader.ReadInt32();
@@ -70,9 +70,10 @@ namespace Libraries.helpers.package
         {
 
             var Header = _parseHeader(headerBuffer);
+
             byte[] Content = _parseContent(contentBuffer, offset, length, Header.Item5);
 
-            return new Package(Header.Item1, Header.Item2, Header.Item3, Header.Item4, Header.Item5, Header.Item6, Header.Item7, Content);
+            return new Package(Header.Item1, Header.Item2, Header.Item3, Header.Item4, Header.Item6, Header.Item7, Content);
 
         }
 
@@ -81,7 +82,7 @@ namespace Libraries.helpers.package
         /// </summary>
         /// <param name="headerBuffer">The header buffer.</param>
         /// <returns>Returns package header elements.</returns>
-        private Tuple<long, byte, byte, byte, int, PacketTypes, byte> _parseHeader(ArraySegment<byte> headerBuffer)
+        private Tuple<long, byte, byte, byte, int, byte, byte> _parseHeader(ArraySegment<byte> headerBuffer)
         {
 
             long HeaderXuid;
@@ -89,13 +90,13 @@ namespace Libraries.helpers.package
             byte HeaderServiceId;
             byte HeaderField22;
             int HeaderContentLength;
-            PacketTypes HeaderPacketType;
+            byte HeaderPacketType;
             byte HeaderRequestId;
 
-            using (var Stream = new MemoryStream(headerBuffer.Array))
+            using (MemoryStream Stream = new MemoryStream(headerBuffer.Array))
             {
 
-                using (var Reader = new BinaryReader(Stream))
+                using (BinaryReader Reader = new BinaryReader(Stream))
                 {
 
                     HeaderXuid = Reader.ReadInt64();
@@ -103,14 +104,14 @@ namespace Libraries.helpers.package
                     HeaderServiceId = Reader.ReadByte();
                     HeaderField22 = Reader.ReadByte();
                     HeaderContentLength = Reader.ReadInt32();
-                    HeaderPacketType = (PacketTypes)Reader.ReadByte();
+                    HeaderPacketType = Reader.ReadByte();
                     HeaderRequestId = Reader.ReadByte();
 
                 }
 
             }
 
-            var Parsed = new Tuple<long, byte, byte, byte, int, PacketTypes, byte>(HeaderXuid, HeaderField20, HeaderServiceId, HeaderField22, HeaderContentLength, HeaderPacketType, HeaderRequestId);
+            var Parsed = new Tuple<long, byte, byte, byte, int, byte, byte>(HeaderXuid, HeaderField20, HeaderServiceId, HeaderField22, HeaderContentLength, HeaderPacketType, HeaderRequestId);
 
             return Parsed;
 
@@ -133,10 +134,10 @@ namespace Libraries.helpers.package
             if (contentLength > 0)
             {
 
-                using (var Stream = new MemoryStream(contentBuffer, offset, length))
+                using (MemoryStream Stream = new MemoryStream(contentBuffer, offset, length))
                 {
 
-                    using (var Reader = new BinaryReader(Stream))
+                    using (BinaryReader Reader = new BinaryReader(Stream))
                     {
 
                         Parsed = Reader.ReadBytes(contentLength);

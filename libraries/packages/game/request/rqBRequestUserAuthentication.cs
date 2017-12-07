@@ -16,10 +16,10 @@ namespace Libraries.packages.game
         public PacketBRequestUserAuthentication(byte[] request)
         {
 
-            using (var Stream = new MemoryStream(request))
+            using (MemoryStream Stream = new MemoryStream(request))
             {
 
-                using (var Reader = new BinaryReader(Stream))
+                using (BinaryReader Reader = new BinaryReader(Stream))
                 {
 
                     var PlayerNameLength = Reader.ReadInt32();

@@ -9,7 +9,7 @@ namespace Chat
 {
 
     [PackageCommandFilter]
-    public class Server : AppServer<PlayerSession, Package>
+    public class Server : AppServer<Session, Package>
     {
 
         public Server() : base(new DefaultReceiveFilterFactory<PackageParser, Package>())

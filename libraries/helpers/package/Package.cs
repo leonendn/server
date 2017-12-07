@@ -27,10 +27,12 @@ namespace Libraries.helpers.package
 
         public byte[] Content { get; }
 
-        public PacketTypes HeaderPacketType { get; }
+        public byte HeaderPacketType { get; }
+
+        public string Type { get; }
 
         // SuperSocket required
-        public string Key => Enum.GetName(typeof(PacketTypes), HeaderPacketType);
+        public string Key => (Type.Equals("chat")) ? Enum.GetName(typeof(PacketTypesChat), HeaderPacketType) : Enum.GetName(typeof(PacketTypes), HeaderPacketType);
 
         /// <summary>
         /// Initializes a new instance of the class.
@@ -43,19 +45,20 @@ namespace Libraries.helpers.package
         /// <param name="packetType">PacketType in header.</param>
         /// <param name="requestId">RequestId in header.</param>
         /// <param name="content">Package content in header.</param>
-        public Package(long xuid, byte field20, byte serviceId, byte field22, int conLength, PacketTypes packetType, byte requestId, byte[] content)
+        public Package(long xuid, byte field20, byte serviceId, byte field22, byte packetType, byte requestId, byte[] content, string type = "")
         {
 
-            // Package layout
             HeaderXuid = xuid;
             HeaderField20 = field20;
             HeaderServiceId = serviceId;
             HeaderField22 = field22;
-            HeaderContentLength = conLength;
+            HeaderContentLength = content.Length;
             HeaderPacketType = packetType;
             HeaderRequestId = requestId;
 
             Content = content;
+
+            Type = type;
 
         }
 
@@ -66,10 +69,10 @@ namespace Libraries.helpers.package
         public byte[] ToByteArray()
         {
 
-            using (var stream = new MemoryStream())
+            using (MemoryStream stream = new MemoryStream())
             {
 
-                using (var writer = new BinaryWriter(stream))
+                using (BinaryWriter writer = new BinaryWriter(stream))
                 {
 
                     byte[] package;

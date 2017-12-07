@@ -133,4 +133,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(SolutionDir)database\*.*" "$(OutDir)database\*.*" /Y /I /E </PostBuildEvent>
+  </PropertyGroup>
 </Project>

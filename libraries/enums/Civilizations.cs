@@ -1,5 +1,6 @@
 ﻿namespace Libraries.enums
 {
+
     public enum Civilizations
     {
 

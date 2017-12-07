@@ -15,10 +15,10 @@ namespace Libraries.packages.game
         public PacketBAssetTransactionGetCurrentCount(byte[] request)
         {
 
-            using (var Stream = new MemoryStream(request))
+            using (MemoryStream Stream = new MemoryStream(request))
             {
 
-                using (var Reader = new BinaryReader(Stream))
+                using (BinaryReader Reader = new BinaryReader(Stream))
                 {
 
                     Xuid = Reader.ReadInt64();

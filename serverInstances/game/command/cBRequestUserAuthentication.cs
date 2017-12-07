@@ -8,7 +8,7 @@ using Libraries.enums;
 namespace Game.command
 {
 
-    public class BRequestUserAuthentication : CommandBase<PlayerSession, Package>
+    public class BRequestUserAuthentication : CommandBase<Session, Package>
     {
 
         /// <summary>
@@ -16,23 +16,28 @@ namespace Game.command
         /// </summary>
         /// <param name="s">The session.</param>
         /// <param name="i">The package info.</param>
-        public override void ExecuteCommand(PlayerSession s, Package p)
+        public override void ExecuteCommand(Session s, Package p)
         {
 
-            var Request = new PacketBRequestUserAuthentication(p.Content);
+            PacketBRequestUserAuthentication Request = new PacketBRequestUserAuthentication(p.Content);
 
             if (s.Logger.IsDebugEnabled)
+            {
+
                 s.Logger.Debug($"Execute command: {Request}");
 
-            var ResponseContent = new PacketBResponseUserAuthentication(Request.Xuid, 0);
+            }
+
+            PacketBResponseUserAuthentication ResponseContent = new PacketBResponseUserAuthentication(Request.Xuid, 0);
 
             if (s.Logger.IsDebugEnabled)
                 s.Logger.Debug($"Command response: {ResponseContent}");
 
-            var Response = ResponseContent.ToByteArray();
-            var Package = new Package(p.HeaderXuid, p.HeaderField20, p.HeaderServiceId, p.HeaderField22, Response.Length, PacketTypes.BResponseUserAuthentication, p.HeaderRequestId, Response);
+            byte[] Response = ResponseContent.ToByteArray();
 
-            var ToSend = Package.ToByteArray();
+            Package Package = new Package(p.HeaderXuid, p.HeaderField20, p.HeaderServiceId, p.HeaderField22, (byte) PacketTypes.BResponseUserAuthentication, p.HeaderRequestId, Response);
+
+            byte[] ToSend = Package.ToByteArray();
 
             s.Send(ToSend, 0, ToSend.Length);
 

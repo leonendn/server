@@ -8,7 +8,7 @@ using Libraries.enums;
 namespace Game.Command
 {
 
-    public class BAssetTransactionGetCurrentCount : CommandBase<PlayerSession, Package>
+    public class BAssetTransactionGetCurrentCount : CommandBase<Session, Package>
     {
 
         /// <summary>
@@ -16,23 +16,28 @@ namespace Game.Command
         /// </summary>
         /// <param name="s">The session.</param>
         /// <param name="i">The package info.</param>
-        public override void ExecuteCommand(PlayerSession s, Package p)
+        public override void ExecuteCommand(Session s, Package p)
         {
 
-            var Request = new PacketBAssetTransactionGetCurrentCount(p.Content);
+            PacketBAssetTransactionGetCurrentCount Request = new PacketBAssetTransactionGetCurrentCount(p.Content);
 
             if (s.Logger.IsDebugEnabled)
+            {
+
                 s.Logger.Debug($"Execute command: {Request}");
 
-            var ResponseContent = new PacketBAssetTransactionCurrentCount(0);
+            }
+
+            PacketBAssetTransactionCurrentCount ResponseContent = new PacketBAssetTransactionCurrentCount(0);
 
             if (s.Logger.IsDebugEnabled)
                 s.Logger.Debug($"Command response: {ResponseContent}");
 
-            var Response = ResponseContent.ToByteArray();
-            var Package = new Package(p.HeaderXuid, p.HeaderField20, p.HeaderServiceId, p.HeaderField22, Response.Length, PacketTypes.BAssetTransactionCurrentCount, p.HeaderRequestId, Response);
+            byte[] Response = ResponseContent.ToByteArray();
 
-            var ToSend = Package.ToByteArray();
+            Package Package = new Package(p.HeaderXuid, p.HeaderField20, p.HeaderServiceId, p.HeaderField22, (byte) PacketTypes.BAssetTransactionCurrentCount, p.HeaderRequestId, Response);
+
+            byte[] ToSend = Package.ToByteArray();
 
             s.Send(ToSend, 0, ToSend.Length);
 

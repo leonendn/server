@@ -16,9 +16,9 @@ namespace Libraries.helpers.general
         public static string PrintBytes(byte[] byteArray)
         {
 
-            var sb = new StringBuilder("new byte[] { ");
+            StringBuilder sb = new StringBuilder("new byte[] { ");
 
-            for (var i = 0; i < byteArray.Length; i++)
+            for (int i = 0; i < byteArray.Length; i++)
             {
 
                 var b = byteArray[i];
@@ -27,7 +27,11 @@ namespace Libraries.helpers.general
                 sb.AppendFormat("0x{0:X2}", b);
 
                 if (i < byteArray.Length - 1)
+                {
+
                     sb.Append(", ");
+
+                }                    
 
             }
 
